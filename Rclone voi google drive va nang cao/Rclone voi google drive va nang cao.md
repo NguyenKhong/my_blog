@@ -366,7 +366,7 @@ Ví dụ bạn đã tạo một remote tên là ***gdrive***
 
 ## IV. Một vài mẹo.
 #### 1. Bạn lo xa ngày nào đó lỡ như rclone không truy cập được google drive hoặc tệ hơn là nó không hỗ trợ nữa, lúc này bạn lo lắng không biết làm sao với các tập tin mã hóa đã lưu trên đó.
-##### Bạn sẽ làm như sau:
+#### Bạn sẽ làm như sau:
 - Tải các tập tin về lưu vào một thư mục nào đó.
 - Biên tập lại tập tin cấu hình (rclone.conf) như sau. Ví dụ bạn lưu các tập tin trên ở thư mục ***d:\download_crypt***.
 	```
