@@ -10,8 +10,9 @@ II. Rclone với google drive.
 
 III. Nâng cao
 1. Biên tập tập tin cấu hình (rclone.conf) của rclone.
-2. Biến google drive thành một ổ đĩa trên windows (GNU/Linux để sau he he).
-3. Mã hóa tập tin và thư mục.
+2. Tạo một http server bằng rclone.
+3. Biến google drive thành một ổ đĩa trên windows (GNU/Linux để sau he he).
+4. Mã hóa tập tin và thư mục.
 
 IV. Một vài mẹo.
 
@@ -186,6 +187,7 @@ Ví dụ bạn đã tạo một remote tên là ***gdrive***
 	rclone -v move gdrive:/youtube/ d:\youtube\
 	rclone -v move gdrive:/youtube/ gdrive:/download/ <-- Với tính năng này thì không cần phải tải về rồi tải lên lại google drive nó được gọi là remote copy. Yêu cầu: phải cùng 1 remote.
 	```
+- Chi tiết cách cấu hình và các cờ (flags) bạn vào link sau đây [https://rclone.org/drive/](https://rclone.org/drive/)
 - Để xem thêm lệnh ta có thể gõ `rclone --help` hoặc vào link: [https://rclone.org/commands/](https://rclone.org/commands/)
 ## III. Nâng cao.
 ### 1. Biên tập tập tin cấu hình (rclone.conf) của rclone.
@@ -258,7 +260,16 @@ Ví dụ bạn đã tạo một remote tên là ***gdrive***
 	e/n/d/r/c/s/q>
 	```
 - Nhớ cất kĩ tập tin này, ***nếu nó bị lọt vào tay ai đó thì họ sẽ có quyền truy cập vào google drive của bạn*** và họ làm gì xấu thì hậu quả ko thể lường trước được.
-### 2. Biến google drive thành một ổ đĩa trên windows (GNU/Linux để sau he he).
+### 2. Tạo một http server bằng rclone.
+- Dùng lệnh sau đây: `rclone -v --addr "IP:PORT" serve http <tên remote>`.
+- Ví dụ 1: Bạn tạo http server liên kết với google drive bên trên với tên remote là: ***gdrive***
+	- Chạy lệnh:  `rclone -v --addr "127.0.0.1:5000" serve http gdrive:/`.
+	- Truy cập vào web browser tại địa chỉ `http://127.0.0.1:6000` và tận hưởng.
+- Ví dụ 2: Bạn tạo http server liên kết với thư mục trên đĩa cứng có đường dẫn sau: `d:\file_server`.
+	- Chạy lệnh: `rclone -v --addr "127.0.0.1:5000" serve http d:\file_server`.
+	- Truy cập vào web browser tại địa chỉ `http://127.0.0.1:6000` và tận hưởng.
+- Ngoài http server, còn có các server khác như http, ftp, sftp, ... Bạn tham khảo link sau: [https://rclone.org/commands/rclone_serve/](https://rclone.org/commands/rclone_serve/)
+### 3. Biến google drive thành một ổ đĩa trên windows (GNU/Linux để sau he he).
 - Đơn giản là chúng ta tạo một dịch vụ webdav và liên kết nó với google drive.
 - Dùng lệnh: ```rclone -v --addr "IP:PORT" serve webdav <tên remote>```
 - Ví dụ: Ta có remote tên là ***gdrive*** và server webdav lắng nghe trên địa chỉ `127.0.01:5000`.
@@ -271,7 +282,7 @@ Ví dụ bạn đã tạo một remote tên là ***gdrive***
 ![](pic/webdav_3.png)
 - Bước 5: Nếu không thích dùng nữa thì ngắt kết nối (Disconnect).<br>
 ![](pic/webdav_4.png)
-### 3. Mã hóa tập tin và thư mục.
+### 4. Mã hóa tập tin và thư mục.
 - Bước 1:  Chạy lệnh: ```rclone config```
 - Bước 2: Để tạo một remote mới ta chọn n và đặt tên cho nó
 	```
@@ -389,7 +400,7 @@ Ví dụ bạn đã tạo một remote tên là ***gdrive***
 - Bạn dùng lệnh: `rclone -v ls download_crypt:/` để liệt kê thông tin các tập tin mã hóa.
 - Cuối cùng bạn dùng lệnh: `rclone -v copy download_crypt:/ d:\decrypt` để giải mã các tập tin trên.
 #### 2. Tạo ổ đĩa mã hóa bằng cách kết hợp webdav và remote mã hóa.
-- Bằng cách kết hợp mục III. 2 và III. 3 với nhau ta sẽ có được 1 ổ đĩa mã hóa. Ta sẽ có chuỗi sau: `Ổ đĩa webdav <-> remote mã hóa <-> google drive`.
+- Bằng cách kết hợp mục III. 3 và III. 4 với nhau ta sẽ có được 1 ổ đĩa mã hóa. Ta sẽ có chuỗi sau: `Ổ đĩa webdav <-> remote mã hóa <-> google drive`.
 - Ví dụ: bạn có remote mã hóa là ***crypt_gdrive***.
 - Lúc này ta sẽ chạy lệnh `rclone -v --addr "127.0.0.1:5000" serve webdav crypt_gdrive:/`. Sau đó làm tương tự như ở mục III. 2 kể từ bước 2 trở đi.
 - Quá trình thao tác đọc/ghi với tập tin ở ổ đĩa trên trông giống một ổ đĩa thông thường, nhưng nó khác ở chỗ trên google drive các tập tin này đều bị mã hóa. Quá trình này không tạo ra tập tin trên ổ cứng trong quá trình thao tác với tập tin. Thông thường khi bạn mã hóa/giải mã tập tin, bạn phải mã hóa/giải mã ra ổ cứng rồi mới đọc/ghi tập tin mới đó. Nhưng ở đây rclone không làm thế, thay vì ổ cứng nó sẽ dùng RAM để làm việc này, có một thuật ngữ chỉ quá trình này gọi là on-the-fly. Bạn yên tâm với tập tin dung lượng lớn thì nó sẽ chia thành đoạn nhỏ để thao tác, do đó sẽ không ăn nhiều RAM đâu.
