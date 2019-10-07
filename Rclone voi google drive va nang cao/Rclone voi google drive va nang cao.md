@@ -402,6 +402,6 @@ Ví dụ bạn đã tạo một remote tên là ***gdrive***
 #### 2. Tạo ổ đĩa mã hóa bằng cách kết hợp webdav và remote mã hóa.
 - Bằng cách kết hợp mục III. 3 và III. 4 với nhau ta sẽ có được 1 ổ đĩa mã hóa. Ta sẽ có chuỗi sau: `Ổ đĩa webdav <-> remote mã hóa <-> google drive`.
 - Ví dụ: bạn có remote mã hóa là ***crypt_gdrive***.
-- Lúc này ta sẽ chạy lệnh `rclone -v --addr "127.0.0.1:5000" serve webdav crypt_gdrive:/`. Sau đó làm tương tự như ở mục III. 2 kể từ bước 2 trở đi.
+- Lúc này ta sẽ chạy lệnh `rclone -v --addr "127.0.0.1:5000" serve webdav crypt_gdrive:/`. Sau đó làm tương tự như ở mục III. 3 kể từ bước 2 trở đi.
 - Quá trình thao tác đọc/ghi với tập tin ở ổ đĩa trên trông giống một ổ đĩa thông thường, nhưng nó khác ở chỗ trên google drive các tập tin này đều bị mã hóa. Quá trình này không tạo ra tập tin trên ổ cứng trong quá trình thao tác với tập tin. Thông thường khi bạn mã hóa/giải mã tập tin, bạn phải mã hóa/giải mã ra ổ cứng rồi mới đọc/ghi tập tin mới đó. Nhưng ở đây rclone không làm thế, thay vì ổ cứng nó sẽ dùng RAM để làm việc này, có một thuật ngữ chỉ quá trình này gọi là on-the-fly. Bạn yên tâm với tập tin dung lượng lớn thì nó sẽ chia thành đoạn nhỏ để thao tác, do đó sẽ không ăn nhiều RAM đâu.
 - Bạn còn có thể tạo một chuỗi sau: `Ổ đĩa webdav <-> remote mã hóa <-> remote cache <-> google drive`. Trong đó `remote cache` sẽ giúp đệm dữ liệu (lưu trữ tại ổ cứng) đã mã hóa/giải mã rồi mới gửi lên google drive. Các bạn có thể tham khảo [tại đây](https://rclone.org/cache/) để tạo một remote cache.
