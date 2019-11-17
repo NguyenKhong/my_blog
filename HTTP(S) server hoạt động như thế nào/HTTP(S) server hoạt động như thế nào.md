@@ -185,7 +185,7 @@ Và sau đây là các bước hoạt động:
 1. Đầu tiên proxy server chuẩn bị 3 tập tin quan trọng sau:
 	* **Private key**. Cái này dùng để tạo chứng chỉ (certificate) cho proxy server (HTTPS web server). Được lưu tại server.
 	* **CA private key**. Cái này dùng để kí vào chứng chỉ bên trên. Được lưu tại server.
-	* **CA certificate**. Cái này dùng để xác nhận chữ kí có trong chứng chỉ trên hay là xác nhận chứng chỉ hợp hệ. Được lưu trữ trong kho CA của trình duyệt.<br>
+	* **CA certificate**. Cái này dùng để xác nhận chữ kí có trong chứng chỉ trên hay là xác nhận chứng chỉ hợp hệ. Được lưu trữ trong kho CA của trình duyệt.
 	
 	Tất cả ba tập tin trên đều là tập tin tự chúng ta tạo ra. Có thể dùng OpenSSL để tạo chúng, và chúng có định dạng x509.
 2. Sau khi thiết lập địa chỉ và cổng proxy server cho trình duyệt. Chúng ta truy cập trang web. Trình duyệt sẽ khởi tạo một đường hầm HTTP (HTTP tunnel).

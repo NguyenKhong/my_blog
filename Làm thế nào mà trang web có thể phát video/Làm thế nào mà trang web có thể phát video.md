@@ -209,6 +209,7 @@ Thông thường chỉ cần mảnh đầu tiên của dữ liệu media là có
 Để thấy được các mảnh media được tải xuống như thế nào, bạn có mở **Chrome dev tool** hoặc **Firefox dev tool** lên chuyển sang thẻ **Network**, và mở một video youtube chẳng hạn bạn sẽ thấy nó được tải như thế nào.<br>
 Ví dụ nè:
 <p align="center"><img src="pic/Image_8.png"></p>
+
 ### Adaptive Streaming
 Nhiều trình phát video có tính năng tự chuyển đổi chất lượng. Việc chuyển đổi chất lượng dựa vào chất lượng mạng (tốc độ mạng), hoặc dựa vào hành vi của người dùng.
 
