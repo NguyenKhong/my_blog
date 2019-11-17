@@ -50,6 +50,7 @@ Sau đây là quá trình bắt tay của SSL/TLS (SSL/TLS handshake) cơ bản:
 
 Chi thêm thì các bạn có thể đọc ở [tại đây](https://en.wikipedia.org/wiki/Transport_Layer_Security) TLS handshake. 
 <p align="center"><img src="pic/Image_4.png"></p>
+
 1. Máy khách gửi thông điệp **ClientHello** cùng với phiên bản TLS cao nhất mà nó hỗ trợ, một số ngẫu nhiên, danh sách các phương thức mã hóa và phương thức nén dữ liệu đến máy chủ. 
 2. Máy chủ phản hồi lại thông điệp **ServerHello** cùng với phiên bản TLS được chọn, một số ngẫu nhiên, và chọn phương thức mã hóa, phương thức nén trong danh sách trên.
 3. Máy chủ gửi **chứng chỉ (certificate)** của nó cho máy khách. <br>

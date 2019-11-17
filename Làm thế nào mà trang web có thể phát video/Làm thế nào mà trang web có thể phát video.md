@@ -7,12 +7,12 @@ Bài viết này được dịch và biên soạn lại từ bài viết gốc: 
 > Xin lỗi về điều này.
 ### Sự cần thiết về một API trình duyệt hỗ trợ chơi video.
 Từ đầu những 2000, việc xem video trên trình duyệt hầu hết đều phải dựa vào các **flash plugin**.
-<center>![](pic/Image_1.png)</center>
+<p align="center"><img src="pic/Image_1.png"></p>
 
 Bởi vì, tại thời điểm đó, chả có cách nào phát video trên trình duyệt cả. Lúc này bạn có 2 lựa chọn, 1 là cài các plugin của bên thứ 3 như là flash hoặc Silverlight hoặc 2 bạn không thể phát mọi video được.
 
 Để lấp đầy lỗ hổng này, *WHATWG* bắt đầu làm việc với phiên bản mới của chuẩn HTML, bao gồm nhiều thứ trong đó có cho phép chơi video và audio trên trình duyệt mà không cần plugin nào cả. Và chuẩn này được biết với cái tên quen thuộc ngày nay là HTML5. 
- <center>![](pic/Image_2.png)</center><br>
+ <p align="center"><img src="pic/Image_2.png"></p><br>
 Và HTML5 mang đến web một thẻ `<video>`. Thẻ mới này cho phép bạn nhúng trực tiếp link video vào HTML và phát nó ngay trên trình duyệt. 
 
 Cái này có vẻ hay ho, nhưng nó chưa tốt bằng flash. Có vài vấn đề sau:
@@ -35,7 +35,7 @@ Như đã nói ở phần trước, rất dễ để nhúng một video vào HTM
 </html>
 ```
 Với đoạn code trên bạn có thể phát video ngay trên trình duyệt đã hỗ trợ HTML5 và codec tương ứng. Trông nó sẽ như thế này:
- <center>![](pic/Image_3.png)</center>
+ <p align="center"><img src="pic/Image_3.png"></p>
 
 Thẻ video này cũng hỗ trợ vài API như *play, pause, seek* hoặc *change* để thay đổi tốc độ khi phát video.
 Những API được truy cập trực tiếp thông qua JS.
@@ -49,7 +49,7 @@ myVideo.pause()
 myVideo.currentTime = 10;
 ```
 Tuy nhiên, hầu hết các video chúng ta thấy trên web hiện nay có hành vi phức tạp hơn nhiều so với những gì này có thể cho phép. Ví dụ, chuyển đổi chất lượng video và cho phép phát trực tiếp (live streaming).
-<center>![](pic/Image_4.png)</center>
+<p align="center"><img src="pic/Image_4.png"></p>
 
 Thật ra các web này vẫn có thẻ video trong mã HTML, nhưng thay vì thiết đặt đường dẫn tập tin video trong thuộc tính *src*, họ lại sử dụng các web API mạnh mẽ hơn như là **Media Source Extensions**.
 ### Media Source Extensions ?
@@ -58,7 +58,7 @@ Thật ra các web này vẫn có thẻ video trong mã HTML, nhưng thay vì th
 Các API này cho phép ta triển khai các tác vụ phức tạp liên quan đến media nhờ sự hỗ trợ của JS và HTML. 
 
 Media Source Extensions dịch ra mở rộng nguồn đa phương tiện, đa phương tiện là video, audio, image, ... Đồng thời cung cấp đối tượng **MediaSource** cho JS để quản lý những nguồn này.
- <center>![](pic/Image_5.png)</center>
+ <p align="center"><img src="pic/Image_5.png"></p>
 
 Như đã đề cập trước đó, chúng ta vẫn dùng đến thẻ video nhưng thuộc tính *src* của thẻ này thay vì liên kết đến video thì nó lại được liên kết đến đối tượng **MediaSource**.
 
@@ -92,7 +92,7 @@ Một MediaSource chứa một hoặc nhiều đối tượng media khác nhau.
 Tất cả các **SourceBuffers** đều được liên kết với một **MediaSource**, và mỗi cái sẽ được dùng để thêm dữ liệu vào trong thẻ video của HTML5 trực tiếp thông qua JS. 
 
 Ví dụ, bạn có 2 nguồn dữ liệu một video, một audio, tương ứng mỗi cái là một SourceBuffer, được quản lý bởi MediaSource.
-<center>![](pic/Image_6.png)</center>
+<p align="center"><img src="pic/Image_6.png"></p>
 
 Tách biệt video và audio cho phép chúng ta dễ quản lý chúng phía server. Đồng thời cũng mang lại lợi ích sau này. Và đây là cách nó hoạt động:
 ```
@@ -143,7 +143,7 @@ Vẫn còn nhiều câu hỏi chưa được trả lời ở đây:
 Trong ví dụ từ bài trước, chúng ta đã có một tập tin đại diện cho âm thanh và một tập tin đại diện cho video. Điều này có thể là đủ đối với trường hợp sử dụng thực sự đơn giản, nhưng không đủ nếu bạn muốn sự phức tạp hơn được cung cấp bởi hầu hết các trang web trực tuyến (đổi ngôn ngữ, chuyển chất lượng, phát trực tuyến, ...).
 
 Điều gì thật sự xảy ra trong các trình phát video tiên tiến, đó là dữ liệu video và audio được chia thành nhiều phân đoạn (segments). Những phân đoạn này có kích thước khác nhau, nhưng thường có thời lượng từ 2 đến 10 giây.
-<center>![](pic/Image_7.png)</center>
+<p align="center"><img src="pic/Image_7.png"></p>
 
 Và bây giờ thay vì đẩy một đống dữ liệu media và chờ nó tải xong thì bạn chỉ cần đẩy từng mảnh dữ liệu một vào SourceBuffers là có thể phát được video rồi.
 
@@ -208,13 +208,13 @@ Thông thường chỉ cần mảnh đầu tiên của dữ liệu media là có
 
 Để thấy được các mảnh media được tải xuống như thế nào, bạn có mở **Chrome dev tool** hoặc **Firefox dev tool** lên chuyển sang thẻ **Network**, và mở một video youtube chẳng hạn bạn sẽ thấy nó được tải như thế nào.<br>
 Ví dụ nè:
-<center>![](pic/Image_8.png)</center>
+<p align="center"><img src="pic/Image_8.png"></p>
 ### Adaptive Streaming
 Nhiều trình phát video có tính năng tự chuyển đổi chất lượng. Việc chuyển đổi chất lượng dựa vào chất lượng mạng (tốc độ mạng), hoặc dựa vào hành vi của người dùng.
 
 Cái này được gọi là Adaptive Streaming (dịch nôm na là dòng dữ liệu thích nghi).<br>
 Ví dụ cho dễ hiểu nè:<br>
-<center>![](pic/Image_9.png)</center>
+<p align="center"><img src="pic/Image_9.png"></p>
 
 Vậy làm sao để làm được điều này.
 
@@ -284,7 +284,7 @@ pushAudioSegment(0, quality)
 Như bạn có thể thấy, chúng ta chả gặp phải vấn đề gì khi đặt các phân đoạn media khác nhau cùng với nhau. Trong bất kì trường hợp nào, tập tin containter (mp4, webm) chứa đủ thông tin cho phép quá trình xử lý diễn ra trơn tru.
 ### Chuyển đổi ngôn ngữ.
 Với các trình phát video phức tạp hơn như Netfilx, Amazon Prime Video, ... Nó cho phép chuyển đổi ngôn ngữ âm thanh dựa vào các thiết lập của người dùng. <br>
-<center>![](pic/Image_10.png)</center>
+<p align="center"><img src="pic/Image_10.png"></p>
 
 Chắc tới đây bạn cũng biết phải làm gì rồi phải không.
 
@@ -400,7 +400,7 @@ pushAudioSegment(0, language, quality)
 ```
 ### Live Contens - Nội dung trực tuyến.
 Phát video trực tuyến trên web bây giờ rất phổ biến (Facebook, Youtube live streaming, ...) và thực tế là video và audio của chúng ta cũng là những tập tin được phân mảnh.
-<center>![](pic/Image_11.png)</center>
+<p align="center"><img src="pic/Image_11.png"></p>
 
 Để giải thích làm thế nào nó hoạt động một cách đơn giản nhất, chúng ta sẽ xem xét một kênh Youtube vừa mới bắt đầu live streaming được 4 giây.
 
@@ -442,7 +442,7 @@ Vấn đề này thường được giải quyết bằng cách dùng giao thứ
 Giải thích các giao thức truyền dẫn khác nhau sẽ làm bài viết này quá dài. Chúng ta sẽ chỉ nói đến những khái niệm cốt lõi giống nhau: **Manifest** (bản kê khai).
 
 Một **Manifest** là một tập tin mô tả các phân đoạn media hiện đang có trên máy chủ.
-<center>![](pic/Image_12.png)</center>
+<p align="center"><img src="pic/Image_12.png"></p>
 <center>Hình trên là ví dụ về nội dung của DASH Manifest, dựa trên XML.</center>
 
 Với Mainifest bạn có thể mô tả hầu hết mọi thứ chúng ta đã tìm hiểu trong bài viết này:
