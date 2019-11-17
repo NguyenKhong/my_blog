@@ -13,7 +13,7 @@ Bởi vì, tại thời điểm đó, chả có cách nào phát video trên tr�
 
 Để lấp đầy lỗ hổng này, *WHATWG* bắt đầu làm việc với phiên bản mới của chuẩn HTML, bao gồm nhiều thứ trong đó có cho phép chơi video và audio trên trình duyệt mà không cần plugin nào cả. Và chuẩn này được biết với cái tên quen thuộc ngày nay là HTML5. 
  <p align="center"><img src="pic/Image_2.png"></p><br>
-Và HTML5 mang đến web một thẻ `<video>`. Thẻ mới này cho phép bạn nhúng trực tiếp link video vào HTML và phát nó ngay trên trình duyệt. 
+Và HTML5 mang đến web một thẻ <code>&#x3Cvideo&#x3E</code>. Thẻ mới này cho phép bạn nhúng trực tiếp link video vào HTML và phát nó ngay trên trình duyệt. 
 
 Cái này có vẻ hay ho, nhưng nó chưa tốt bằng flash. Có vài vấn đề sau:
 * Khi bạn xem video youtube bạn có thể chọn nhiều chất lượng video khác nhau. Tải video trước khi xem.
