@@ -3,10 +3,10 @@
 ### 1. Giao thức HTTP.
 *HTTP (Hyper Text Transfer Protocol - Giao thức truyền tải siêu văn bản)* là một giao thức của mạng Internet, được dùng để trao đổi thông tin giữa máy cung cấp dịch vụ web (web server) và máy sử dụng dịch vụ web (web client) trong mô hình mạng Client/Server dùng cho WWW (World Wide Web). 
 
-HTTP là giao thức thuộc tầng ứng dụng (Application Layer), nằm trên tầng giao vận (Transport Layer) và tầng mạng (Network Layer). <br>
+HTTP là giao thức thuộc tầng ứng dụng (Application Layer), nằm trên tầng giao vận (Transport Layer) và tầng mạng (Network Layer). 
 <p align="center">
 <img src="pic/Image_1.png">
-<p align="center">
+</p>
 
 #### Vậy để HTTP hoạt động thì cần gì ? <br>
 HTTP thuộc mô hình TCP/IP, mô hình này hoạt động theo tầng, vì vậy để xử lý dữ liệu của HTTP, thì ta phải thỏa mãn các điều kiện của các giao thức ở tầng dưới nó thì mới có thể hoạt động được, cụ thể ở đây ta phải thỏa mãn  TCP và IP (không xem xét các giao thức bên dưới IP vì được máy tính và card mạng xử lý rồi.). 
@@ -21,7 +21,7 @@ HTTPS (Hyper text transfer protocol Secure - Giao thức truyền tải siêu v�
 HTTPS = HTTP + SSL/TLS.
 
 HTTPS giúp trao đổi thông tin trên mạng một cách an toàn và bảo mật.<br>
-<center>![](pic/Image_2.png)</center><br>
+<p align="center"><img src="pic/Image_2.png"></p>
 Như chúng ta thấy ở hình trên thì HTTPS chỉ đơn giản là chèn thêm một tầng bảo mật vào giữa tầng ứng dụng và tầng vận chuyển. 
 
 Tầng được thêm vào này sẽ mã hóa dữ liệu ở tầng ứng dụng sau đó đưa dữ liệu cho tầng vận chuyển, vận chuyển đi trên cơ sở hạ tầng vốn đã có trước đó. Đây cũng chính là cái hay của mô hình tầng (lớp).
@@ -35,7 +35,7 @@ Có 2 ứng dụng chính của cặp khóa này.
 * **Chữ ký số**: A vẫn giữ khóa bí mật (private key), và công khai khóa công khai (public key). Tuy nhiên, A sẽ mã hóa dữ liệu với khóa bí mật (private key), B (người nhận được public key) sẽ dùng public key giải mã dữ liệu trên được dữ liệu ban đầu. *Tuy nhiên đây chưa là chữ kí số*.
 
 	Thông thường dữ liệu gốc (gọi là D) sẽ được cho đi qua hàm băm ra được chuỗi băm H. Lúc này A sẽ dùng private key mã hóa chuỗi băm H ra được S, bước này được gọi là ***ký (sign)***, sau đó A gộp D và S lại gửi cho bên B. Khi nhận được D và S, B dùng public key giải mã S ra được S' và B lại cho D đi qua hàm băm ra H', B so sánh H' và S', nếu bằng nhau thì dữ liệu D vẫn toàn vẹn (không bị chỉnh sửa), và ngược lại, bước này gọi xác nhận chữ kí **(verify sign)**. Cơ bản thì chữ kí số hoạt động như trên, nhưng trong thực tế sẽ khác chút ít. 
-	<center>![](pic/Image_3.png)</center>
+	<p align="center"><img src="pic/Image_3.png"></p>
 
 	Trong quá trình trên thì nhờ vào hàm băm nên chúng ta bảo vệ được **tính toàn vẹn của dữ liệu**.
 	
@@ -49,7 +49,7 @@ Có 2 ứng dụng chính của cặp khóa này.
 Sau đây là quá trình bắt tay của SSL/TLS (SSL/TLS handshake) cơ bản:
 
 Chi thêm thì các bạn có thể đọc ở [tại đây](https://en.wikipedia.org/wiki/Transport_Layer_Security) TLS handshake. 
-<center>![](pic/Image_4.png)</center>
+<p align="center"><img src="pic/Image_4.png"></p>
 1. Máy khách gửi thông điệp **ClientHello** cùng với phiên bản TLS cao nhất mà nó hỗ trợ, một số ngẫu nhiên, danh sách các phương thức mã hóa và phương thức nén dữ liệu đến máy chủ. 
 2. Máy chủ phản hồi lại thông điệp **ServerHello** cùng với phiên bản TLS được chọn, một số ngẫu nhiên, và chọn phương thức mã hóa, phương thức nén trong danh sách trên.
 3. Máy chủ gửi **chứng chỉ (certificate)** của nó cho máy khách. <br>
@@ -169,11 +169,11 @@ Nhìn chung thì trong một chứng chỉ sẽ có:
 #### Certificate Authorites nằm ở đâu ?
 Mỗi máy tính đều có ***kho CA*** của riêng nó. Sau đây là một số kho lưu trữ:
 * **Hệ điều hành Windows:** Bấm CTRL+R và nhập ***CERTMGR.MSC***, hiện thị hộp thoại ***certmgr***, chọn tiếp ***Trusted Root Certification Authorities > Certificates***.
-<center>![](pic/Image_5.png)</center>
+<p align="center"><img src="pic/Image_5.png"></p>
 * **Trình duyệt FireFox:** 
-<center>![](pic/Image_6.png)</center>
+<p align="center"><img src="pic/Image_6.png"></p>
 * **Trình duyệt Google Chrome:**. Nếu google chrome được cài trên hệ điều hành windows thì nó sẽ dùng chung kho CA của hệ điều hành này.
-<center>![](pic/Image_7.png)</center>
+<p align="center"><img src="pic/Image_7.png"></p>
 
 ### 3. HTTP(S) proxy server hoạt động như thế nào ?
 Để là một HTTPS proxy server thì đầu tiên nó phải là một HTTPS server.
@@ -217,10 +217,10 @@ Và sau đây là các bước hoạt động:
 Khi dùng Wireshark bắt gói tin giữa Fiddler và trình duyệt ta sẽ được như sau:
 
 À Fiddler proxy server lắng nghe ở cổng **8888**, còn trình duyệt mở cổng **3105** để kết nối nhé.
- ![](pic/Image_8.png)
+ <p align="center"><img src="pic/Image_8.png"></p>
 
 Còn đây là nội dung gói tin khi ta click chuột vào dòng màu đỏ.
-![](pic/Image_9.png)
+<p align="center"><img src="pic/Image_9.png"></p>
 
 Như hình trên **Fiddler** tự tạo chứng chỉ của riêng nó. Bạn thấy dòng màu đỏ chứ, nó ghi nhà phát hành (**Issuer**) là **DO_NOT_TRUST_FiddlerRoot**. Cái này là hàng tự tạo của Fiddler đó. Còn dòng màu xanh ghi phát hành cho đối tượng nào (**subject**) thì bạn có thể thấy là ***.google.com**.
 
@@ -231,7 +231,7 @@ Bạn có thể lấy **CA certificate** của Fiddler ở đâu, thật ra có 
 ![](pic/Image_11.png)
 
 Sự khác nhau giữa trước và sau khi bật Fiddler. (à nhớ cài CA certificate vào kho CA trước nhá (^.^)).
-![](pic/Image_12.png)
+<p align="center"><img src="pic/Image_12.png"></p>
 
 ### 4. Một số vấn đề gặp phải khi dùng HTTPS proxy server như Fiddler, Burpsuite.
 Tôi có đọc nhiều bài trên fb có nội dung: "Em thiết đặt IP:port của Fiddler cho điện thoại rồi mà khi bật app vẫn không bắt được HTTPS request."
