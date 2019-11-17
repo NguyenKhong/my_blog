@@ -462,4 +462,4 @@ Có rất nhiều trình phát video trên thế giới. Sau đây là các trì
 * [hls.js](https://github.com/video-dev/hls.js/): Tất nhiên là chơi được nội dung HLS rồi. Có mặt trong các sản phẩm của các ông lớn như Dailymontion, Twitter, VK, ...
 * [shaka-player](https://github.com/google/shaka-player): Chơi được DASH và HLS. Được bảo trì bởi GOOOOGLE.
 ## Tổng kết.
-###### Dù cho trình phát media (media player) có giao diện đẹp, tính năng khủng thì cốt lõi của nó vẫn là dựa trên MediaSource và SourceBuffers cả thôi (^_^). 
+#### Dù cho trình phát media (media player) có giao diện đẹp, tính năng khủng thì cốt lõi của nó vẫn là dựa trên MediaSource và SourceBuffers cả thôi (^_^). 
