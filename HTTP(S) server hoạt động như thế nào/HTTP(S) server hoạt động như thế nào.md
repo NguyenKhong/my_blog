@@ -240,7 +240,7 @@ Nhưng đôi lúc sẽ gặp phải các app cứng đầu. App này sẽ thiế
 * Dịch ngược app, tìm xem dòng mã kiểm tra chữ kí của chứng chỉ proxy server tự tạo. Sửa lại điều kiện luôn đúng sẽ dẫn đến app đó chấp nhận mọi chứng chỉ mà ta tự tạo. Thế là ta sẽ bắt được HTTPS request thôi.
 
 ### 5. Mã nguồn proxy server tham khảo.
-Bạn có thể tham khảo mã nguồn này [proxy2](https://github.com/inaz2/proxy2) viết bằng python tuy nó hơi đơn giản nhưng sẽ giúp chúng ta hiểu được cách viết một proxy server là như thế nào. Muốn nó chạy được cũng phải tốn chút công sức nhá ^v^.
+Bạn có thể tham khảo mã nguồn này [proxy2](https://github.com/inaz2/proxy2) hoặc phiên bản cũ hơn của nó [proxy2](https://github.com/futuresimple/proxy2) viết bằng python tuy nó hơi đơn giản nhưng sẽ giúp chúng ta hiểu được cách viết một proxy server là như thế nào. Muốn nó chạy được cũng phải tốn chút công sức nhá ^v^.
 
 ### 6. HẾT
 Bài viết còn sơ sài, nếu ai đi ngang qua xin có gì góp ý thêm. ^-^ 
