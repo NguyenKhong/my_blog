@@ -169,12 +169,12 @@ Nhìn chung thì trong một chứng chỉ sẽ có:
 * **Chữ ký số cùng thuật toán của nó (Signature Value, Signature Algorithm)**. Trong ví dụ trên thì nó giá trị nó nằm cuối cùng.
 #### Certificate Authorites nằm ở đâu ?
 Mỗi máy tính đều có ***kho CA*** của riêng nó. Sau đây là một số kho lưu trữ:
-* **Hệ điều hành Windows:** Bấm CTRL+R và nhập ***CERTMGR.MSC***, hiện thị hộp thoại ***certmgr***, chọn tiếp ***Trusted Root Certification Authorities > Certificates***.
-<p align="center"><img src="pic/Image_5.png"></p>
-* **Trình duyệt FireFox:** 
-<p align="center"><img src="pic/Image_6.png"></p>
-* **Trình duyệt Google Chrome:**. Nếu google chrome được cài trên hệ điều hành windows thì nó sẽ dùng chung kho CA của hệ điều hành này.
-<p align="center"><img src="pic/Image_7.png"></p>
+* **Hệ điều hành Windows:** Bấm CTRL+R và nhập ***CERTMGR.MSC***, hiện thị hộp thoại ***certmgr***, chọn tiếp ***Trusted Root Certification Authorities > Certificates***.<br>
+![](pic/Image_5.png)
+* **Trình duyệt FireFox:** <br>
+![](pic/Image_6.png)
+* **Trình duyệt Google Chrome:**. Nếu google chrome được cài trên hệ điều hành windows thì nó sẽ dùng chung kho CA của hệ điều hành này.<br>
+![](pic/Image_7.png)
 
 ### 3. HTTP(S) proxy server hoạt động như thế nào ?
 Để là một HTTPS proxy server thì đầu tiên nó phải là một HTTPS server.
