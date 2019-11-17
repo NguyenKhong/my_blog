@@ -182,36 +182,36 @@ Mỗi máy tính đều có ***kho CA*** của riêng nó. Sau đây là một s
 Như đã viết ở phần trước, một HTTPS Server cần có Private key và Certificate.
 
 Và sau đây là các bước hoạt động:
-0. Đầu tiên proxy server chuẩn bị 3 tập tin quan trọng sau:
+1. Đầu tiên proxy server chuẩn bị 3 tập tin quan trọng sau:
 	* **Private key**. Cái này dùng để tạo chứng chỉ (certificate) cho proxy server (HTTPS web server). Được lưu tại server.
 	* **CA private key**. Cái này dùng để kí vào chứng chỉ bên trên. Được lưu tại server.
 	* **CA certificate**. Cái này dùng để xác nhận chữ kí có trong chứng chỉ trên hay là xác nhận chứng chỉ hợp hệ. Được lưu trữ trong kho CA của trình duyệt.<br>
 	
 	Tất cả ba tập tin trên đều là tập tin tự chúng ta tạo ra. Có thể dùng OpenSSL để tạo chúng, và chúng có định dạng x509.
-1. Sau khi thiết lập địa chỉ và cổng proxy server cho trình duyệt. Chúng ta truy cập trang web. Trình duyệt sẽ khởi tạo một đường hầm HTTP (HTTP tunnel).
-2. Trình duyệt sẽ gửi request **HTTP CONNECT** tới proxy server. Nội dung request có gì? Nó sẽ có **tên miền + cổng (port)** của trang web mà ta muốn truy cập.
+2. Sau khi thiết lập địa chỉ và cổng proxy server cho trình duyệt. Chúng ta truy cập trang web. Trình duyệt sẽ khởi tạo một đường hầm HTTP (HTTP tunnel).
+3. Trình duyệt sẽ gửi request **HTTP CONNECT** tới proxy server. Nội dung request có gì? Nó sẽ có **tên miền + cổng (port)** của trang web mà ta muốn truy cập.
 	```
 	CONNECT www.google.com:443 HTTP/1.1
 	Host: www.google.com:443
 	Connection: keep-alive
 	User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
 	``` 
-3. Proxy server sẽ trích xuất **tên miền** và **cổng** ở dòng đầu tiên (*CONNECT www.google.com:443 HTTP/1.1*). 
-4. Sau khi có được tên miền, proxy server sẽ **tạo chứng chỉ** của nó dựa trên **tên miền** vừa lấy được. Sau đó dùng **private key** server tạo ra **public key**, gắn nó vào chứng chỉ.
-5. Tiếp theo, proxy server dùng **CA private key** kí vào chứng chỉ mới vừa được tạo ra ở trên. Đây có thể gọi là công đoạn tạo chứng chỉ giả cho tên miền cần truy truy cập.
+4. Proxy server sẽ trích xuất **tên miền** và **cổng** ở dòng đầu tiên (*CONNECT www.google.com:443 HTTP/1.1*). 
+5. Sau khi có được tên miền, proxy server sẽ **tạo chứng chỉ** của nó dựa trên **tên miền** vừa lấy được. Sau đó dùng **private key** server tạo ra **public key**, gắn nó vào chứng chỉ.
+6. Tiếp theo, proxy server dùng **CA private key** kí vào chứng chỉ mới vừa được tạo ra ở trên. Đây có thể gọi là công đoạn tạo chứng chỉ giả cho tên miền cần truy truy cập.
 
 	Chúng ta biết rằng khi truy cập một trang HTTPS thì server sẽ trả về một chứng chỉ, chứng chỉ này sẽ được xác nhận chữ kí thông qua CA có trong kho CA của trình duyệt. Bạn có thể xem lại cách HTTPS hoạt động phần trước. Trong trường hợp proxy server của chúng ta, chúng ta có thể lấy được chứng chỉ của server thật, nhưng chúng ta đâu có được private key của server thật, không có được nó, chúng ta làm gì giải mã được Session key, không có Session key thì làm ăn được gì nữa (^_^).
 
 	Để giải quyết vấn đề này. Ta cứ tạo private key và chứng chỉ của riêng chúng ta. Tự tạo luôn CA. Đưa CA này vào danh sách các CA có thể tin tưởng được của trình duyệt là có thể giải quyết được vấn đề này.
-6. Nếu không gặp lỗi hoặc vấn đề gì thì proxy server sẽ trả về mã HTTP 200. Thông báo việc tạo kết nối đã thành công.
+7. Nếu không gặp lỗi hoặc vấn đề gì thì proxy server sẽ trả về mã HTTP 200. Thông báo việc tạo kết nối đã thành công.
 	```
 	HTTP/1.1 200 Connection Established
 	FiddlerGateway: Direct
 	StartTime: 15:00:16.781
 	Connection: close
 	```
-7. Sau đó khởi tạo quá trình bắt tay TLS/SSL (TLS/SSL handshake). Kết thúc quá trình này là chúng ta đã có một kết nối bảo mật giữa trình duyệt và HTTPS proxy server. 
-8. Việc còn lại của proxy server là khởi tạo kết nối HTTPS đến server thật thôi. Sau đó trung chuyển dữ liệu qua lại giữa 2 bên cơ bản là xong rồi.
+8. Sau đó khởi tạo quá trình bắt tay TLS/SSL (TLS/SSL handshake). Kết thúc quá trình này là chúng ta đã có một kết nối bảo mật giữa trình duyệt và HTTPS proxy server. 
+9. Việc còn lại của proxy server là khởi tạo kết nối HTTPS đến server thật thôi. Sau đó trung chuyển dữ liệu qua lại giữa 2 bên cơ bản là xong rồi.
 
 	Nếu bạn dùng các proxy như Fiddler, Burpsuite thì trong quá trình trung chuyển dữ liệu chúng ta có thể lưu lại request và response, chặn kết nối, xem log, và nhiều trò khác nữa. 
 
