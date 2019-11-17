@@ -4,7 +4,7 @@
 *HTTP (Hyper Text Transfer Protocol - Giao thức truyền tải siêu văn bản)* là một giao thức của mạng Internet, được dùng để trao đổi thông tin giữa máy cung cấp dịch vụ web (web server) và máy sử dụng dịch vụ web (web client) trong mô hình mạng Client/Server dùng cho WWW (World Wide Web). 
 
 HTTP là giao thức thuộc tầng ứng dụng (Application Layer), nằm trên tầng giao vận (Transport Layer) và tầng mạng (Network Layer). <br>
-<center>![](pic/Image_1.png)</center>
+![](pic/Image_1.png)
 #### Vậy để HTTP hoạt động thì cần gì ? <br>
 HTTP thuộc mô hình TCP/IP, mô hình này hoạt động theo tầng, vì vậy để xử lý dữ liệu của HTTP, thì ta phải thỏa mãn các điều kiện của các giao thức ở tầng dưới nó thì mới có thể hoạt động được, cụ thể ở đây ta phải thỏa mãn  TCP và IP (không xem xét các giao thức bên dưới IP vì được máy tính và card mạng xử lý rồi.). 
 * Cơ bản thì giao thức IP cần một địa chỉ IP để xác định đúng máy cần giao tiếp, địa chỉ IP là một số nguyên với IPv4 (version - phiên bản) là số nguyên 32 bit, IPv6 là số nguyên 64 bit. Ở giao thức IP thuộc tầng mạng thì dữ liệu được gọi là packet (gói tin), tại đây thì bộ định tuyến chịu trách nhiệm xử lý các packet. 
