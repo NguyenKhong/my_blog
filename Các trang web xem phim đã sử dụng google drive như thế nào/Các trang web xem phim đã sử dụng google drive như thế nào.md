@@ -348,10 +348,9 @@ Chúng ta sẽ xem xét trang web mẫu [https://hydrax.net/](https://hydrax.net
  20. Giải mã nội dung TS. Bạn có thể dùng OpenSSL để giải mã từng tập tin TS.
 
 		Ví dụ:
-		* hash = **Xlf3qKTXzYh5JbaN7cmnIw** decode ra được hex: **0x5E57F7A8A4D7CD887925B68DEDC9A723**
-		<p align="center"><img src="pic/Image_47.png"></p>
-		* Trích xuất tập tin TS.
-		<p align="center"><img src="pic/Image_48.png"></p>
+		* hash = **Xlf3qKTXzYh5JbaN7cmnIw** decode ra được hex: **0x5E57F7A8A4D7CD887925B68DEDC9A723**.<p align="center"><img src="pic/Image_47.png"></p>
+
+		* Trích xuất tập tin TS.<p align="center"><img src="pic/Image_48.png"></p>
 
 		* **IV = 0x0** hoặc dùng iv mà bạn kiếm được.
 		
