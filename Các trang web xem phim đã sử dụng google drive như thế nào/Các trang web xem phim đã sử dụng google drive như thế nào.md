@@ -214,7 +214,7 @@ Chúng ta sẽ xem xét trang web mẫu [https://hydrax.net/](https://hydrax.net
 	<p align="center"><img src="pic/Image_21.png"></p>
 
 	Chúng ta sẽ dừng tại **player.min.js**
-	<p align="center"><img src="pic//Image_22.png"></p>
+	<p align="center"><img src="pic/Image_22.png"></p>
 
 	Chưa vội đọc code, chúng ta sẽ tìm kiếm **EXTM3U** và **URL.createObjectURL**. Nếu có thì đặt breakpoint.
 	<p align="center"><img src="pic/Image_23.png"></p>
