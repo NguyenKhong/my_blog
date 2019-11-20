@@ -107,7 +107,7 @@ Trước khi xem nội dung tiếp theo, vui lòng đọc các bài này trướ
 * [https://nhtcntt.blogspot.com/2019/10/chong-lai-viec-chong-debug-javascript.html](https://nhtcntt.blogspot.com/2019/10/chong-lai-viec-chong-debug-javascript.html)
 
 Chúng ta sẽ xem xét trang web mẫu [https://hydrax.net/](https://hydrax.net/), sử dụng Chrome và Fiddler.
-1. Mở Chrome rồi bật Chrome Dev Tool và Fiddler, truy cập trang web [https://hydrax.net/](https://hydrax.net/). <p align="center"><img src="pic/Image_2.png"></p>
+1. Mở Chrome rồi bật Chrome Dev Tool và Fiddler, truy cập trang web [https://hydrax.net/](https://hydrax.net/).<p align="center"><img src="pic/Image_2.png"></p>
 2. Cho chạy trình phát media một chút rồi ngừng.
 3. Như đã đề cập ở phần trước, khi chúng ta xem video thì, trình chơi media sẽ tải tập tin Playlist và các tập tin TS. Chúng ta sẽ vào Fiddler xem xét thử.<p align="center"><img src="pic/Image_3.png"></p>
 4. Sau một hồi tìm kiếm, chắc chắn các bạn sẽ chả thấy tập tin TS đâu cả. Nhưng không sao tôi sẽ chỉ cho các bạn cách nhận diện nó. 
@@ -127,7 +127,6 @@ Chúng ta sẽ xem xét trang web mẫu [https://hydrax.net/](https://hydrax.net
 7. Để xem URL này được gọi từ đâu, chúng ta thử tìm kiếm trong Fiddler trước. Nếu may mắn nó nằm trong tập tin nào đó, thì việc tải về sẽ dễ dàng hơn.
 
 	Để tìm kiếm ta cần xác định URL, thông thường ta chỉ cần một phần của URL là đủ. Sau khi xác định chúng ta có phần url này: `/docs/securesc` vì nó có mặt hầu hết trong các URL chứa nội dung TS.
-
 	<p align="center"><img src="pic/Image_5.png"></p>
 	
 	Không may là chả có dòng Highlight màu vàng nào hiện lên cả. Suy ra URL này có thể được sinh ra từ mã JS.
@@ -221,6 +220,7 @@ Chúng ta sẽ xem xét trang web mẫu [https://hydrax.net/](https://hydrax.net
 	<p align="center"><img src="pic/Image_23.png"></p>
 	
 	<p align="center"><img src="pic/Image_24.png"></p>
+
 	May mắn là chúng ta tìm được 2 vị trí có chứa **EXTM3U** và **URL.createObjectURL** cùng nằm trong 1 hàm luôn.
 
 	Quay lại XHR/fetch breakpoint ban đầu
@@ -235,10 +235,12 @@ Chúng ta sẽ xem xét trang web mẫu [https://hydrax.net/](https://hydrax.net
 
 	Không lẽ tới đây bỏ cuộc, không bạn thử bấm nút play trong ô màu xanh thử xem.
 	<p align="center"><img src="pic/Image_27.png"></p>
+
 	Ồ nó dừng lại ngay điểm ta mới đặt breakpoint kìa, và tham số **t** giống tham số **t** ở bức hình trên chưa kìa. Tuy nhiên 2 hàm này khác nhau nhá.
 
 	Nhưng 2 hàm nó liên quan như thế nào với nhau. Tất cả là nhờ hàm **la**
 	<p align="center"><img src="pic/Image_28.png"></p>
+
 	Trong hàm **la** code trong **case 1** được thực thi trước, nó sẽ gọi hàm **G(o, N.W(), 2)**, mà **N.W()** là cái hàm có chứa api **fetch** lúc nãy đó, còn kết quả trả về sẽ lưu vào **o.w**.
 
 	 Sau đó nó sẽ gọi tiếp **case 2**, gán **e = o.w**, sau đó gọi hàm **G(o, N.pa(e, n), 7)** vì vậy tham số **t** của hàm **pa** bên trên sẽ là **e** nên ta có kết quả như hình trên.
@@ -250,12 +252,15 @@ Chúng ta sẽ xem xét trang web mẫu [https://hydrax.net/](https://hydrax.net
 
 	Đi tiếp vào hàm **N.ua(e[o])** chúng ta sẽ có kết quả.
 	<p align="center"><img src="pic/Image_30.png"></p>
+
 	Vậy thì ra nó đang xây dựng lại **MasterPlaylist**.
 	
 	Đi tiếp vào hàm **N.fa(t[e[o]], t.servers)** nào.
 	<p align="center"><img src="pic/Image_31.png"></p>
+
 	Hàm này sẽ xây dựng lại **MediaPlaylist** tương ứng với mỗi loại chất lượng khác nhau.
 	<p align="center"><img src="pic/Image_32.png"></p>
+
 	Sau khi xây dựng xong MediaPlaylist nó sẽ trả về một **blob url** chứa nội dung của MediaPlaylist. Việc phân tích và xây dựng lại như thế nào mình xin không đề cập ở đây, vì nó sẽ làm bài viết này rất là dài. Tuy nhiên nó cũng khá dễ thôi.
 
 	Quay trở lại hàm **pa**. Sau khi duyệt qua hết tất cả các chất lượng chúng ta thu được MasterPlaylist
@@ -291,6 +296,7 @@ Chúng ta sẽ xem xét trang web mẫu [https://hydrax.net/](https://hydrax.net
 
 	Sau khi tải lại trang chúng ta được như sau
 	<p align="center"><img src="pic/Image_35.png"></p>
+
 	Theo như hình trên thì nội dung TS được mã hóa **AES-128-CBC**, có **uri** để lấy **key** giải mã, và cả **IV** nữa. Vậy những thông tin trên ở đâu mà ra trong khi nội dung **MediaPlaylist** không có. 
 	
 	Nhìn lại hình và Call stack chúng ta sẽ thấy tham số hàm **onKeyLoading** là **t** hàm này được gọi bởi **_loadFragmentOrKey**.
@@ -302,6 +308,7 @@ Chúng ta sẽ xem xét trang web mẫu [https://hydrax.net/](https://hydrax.net
 
 	Mà hàm **_fetchPayloadOrEos** được gọi từ **_doTickIdle**, nên ta vào hàm **_doTickIdle** để xem xét.
 	<p align="center"><img src="pic/Image_38.png"></p>
+
 	Với hình trên thì **this.levels** ở đâu ra. Đúng hơn ta nên chú ý **this.levels[n].details** được tạo ra ở đâu.
 	
 	Bạn sẽ vào hai hàm là **_doTickIdle** và **doTick** bạn sẽ không thấy **this.levels**. Nhưng đến hàm **onLevelLoaded** thì lại thấy nó (hiện tại chúng ta đang ở **class e** nên **this** ở các hàm này đều cùng là một).
@@ -334,6 +341,7 @@ Chúng ta sẽ xem xét trang web mẫu [https://hydrax.net/](https://hydrax.net
 
 	Tiếp tục đi vào hàm **configKey**.
 	<p align="center"><img src="pic/Image_46.png"></p>
+
 	Lúc này biến **t** dòng 8048 sẽ chứa giá trị của key giải mã (AES-128 bit = 16 bytes độ dài key), biến **t** được chuyển hóa từ biến **hash** thông qua hàm đơn giản ở dòng 8040. Thật ra decode base64 **hash** là ra được key rồi.
 
 	Tổng kết vậy là ta đã có đủ thông tin để giải mã ròi.
@@ -344,7 +352,8 @@ Chúng ta sẽ xem xét trang web mẫu [https://hydrax.net/](https://hydrax.net
 		<p align="center"><img src="pic/Image_47.png"></p>
 		* Trích xuất tập tin TS.
 		<p align="center"><img src="pic/Image_48.png"></p>
-		* **IV = 0x0**
+
+		* **IV = 0x0** hoặc dùng iv mà bạn kiếm được.
 		
 		Ta sẽ dùng lệnh sau để giải mã:
 		```
