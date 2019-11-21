@@ -77,7 +77,7 @@ Giải thích
 
 	Từ phiên bản 4 trở đi có hỗ trợ thêm thẻ **EXT-X-BYTERANGE** thẻ này cho phép request theo HTTP header Range đối với các máy chủ có hỗ trợ (cho phép tải nhiều mảnh, giống IDM ấy). 
 	
-	**EXT-X-BYTERANGE: n[@o]**, với **n** là một số nguyên chỉ ra độ dài của phân đoạn này tính bằng byte. Nếu có thêm **o** cũng là một số nguyên thì nó vị trí byte thứ bao nhiêu tính từ đầu tập tin gốc.
+	**EXT-X-BYTERANGE: n[@o]**, với **n** là một số nguyên chỉ ra độ dài của phân đoạn này tính bằng byte. Nếu có thêm **o** cũng là một số nguyên thì nó chỉ ra vị trí byte thứ bao nhiêu tính từ đầu tập tin gốc.
 3. Sau khi được phân phối qua mạng bằng HTTP, thì trình chơi media (media player) như [HLS.js](https://github.com/video-dev/hls.js/) sẽ **phân tích nội dung Playlist**, tải các tập tin TS rồi phát lên web. Cơ bản là vậy.
 
 #### Thông tin thêm.
@@ -192,7 +192,7 @@ Chúng ta sẽ xem xét trang web mẫu [https://hydrax.net/](https://hydrax.net
 	 Sau khi thử mở trên trình duyệt ta được kết quả như vầy.
 	<p align="center"><img src="pic/Image_18.png"></p>
 
-	Vậy tại sao URL kia lại request được ta, các bạn sẽ cho rằng nó thay `redirect` bằng `html` rồi request được tác giả ạ. Nhưng không các bạn vào Fiddler và làm theo như vầy coi.
+	Vậy tại sao URL kia lại request được ta, các bạn sẽ cho rằng nó thay `redirect` bằng `html` rồi mới request được tác giả ạ. Nhưng không các bạn vào Fiddler và làm theo như vầy coi.
 	<p align="center"><img src="pic/Image_19.png"></p>
 
 	Nội dung nó trả về nè
@@ -334,7 +334,7 @@ Chúng ta sẽ xem xét trang web mẫu [https://hydrax.net/](https://hydrax.net
 	Quay lại hàm **onKeyLoading**, chúng ta tiếp tục debug.
 	<p align="center"><img src="pic/Image_44.png"></p>
 
-	Tiếp tục và hàm **load**, hàm load sẽ gọi **loadInternal**. Bạn có thể tham khảo hàm loadInternal [tại đây](https://github.com/video-dev/hls.js/blob/master/src/utils/xhr-loader.js#L43). Tuy nhiên ở code sau đây thì nó đã được chỉnh sửa lại hơi khác một chút. 
+	Tiếp tục và hàm **load**, hàm load sẽ gọi **loadInternal**. Bạn có thể tham khảo hàm load và loadInternal [tại đây](https://github.com/video-dev/hls.js/blob/master/src/utils/xhr-loader.js#L34). Tuy nhiên ở code sau đây thì nó đã được chỉnh sửa lại hơi khác một chút. 
 	<p align="center"><img src="pic/Image_45.png"></p>
 
 	Và **hash** là một biến toàn cục có giá trị bằng với giá trị của thẻ **EXT-X-HASH**.
@@ -356,7 +356,7 @@ Chúng ta sẽ xem xét trang web mẫu [https://hydrax.net/](https://hydrax.net
 		
 		Ta sẽ dùng lệnh sau để giải mã:
 		```
-		openssl aes-128-cbc -d -nosalt -iv 0 -K key(mã hex) -in segment.ts -out seg_decrypt.ts
+		openssl aes-128-cbc -d -nosalt -iv IV(mã hex) -K key(mã hex) -in segment.ts -out seg_decrypt.ts
 		```
 		Với ví dụ trên ta sẽ có:
 		<p align="center"><img src="pic/Image_49.png"></p>
@@ -373,7 +373,7 @@ Khi tạo bằng ffmpeg bạn sẽ có 2 lựa chọn:
 
 Tạo được tập tin TS, họ sẽ tải nó lên google drive, lúc này sẽ có ID của tập tin TS đó. Có được ID họ dùng google drive api lấy link tải về tập tin TS từ ID đó, nhìn chung các link sẽ có dạng `.googleusercontent.com/docs/securesc/`. 
 
-Tất nhiên từ link tải trên vẫn có thể truy ngược lại ID được. ví dụ: `https://doc-0o-6k-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/si1g5f6f0bfi0h2r4cvn9athuatgmvll/1574258400000/11313363601839078081/*/1WVdV3oPGJnPNnvA8UjRUNz0DtKJAoTLp?e=download` thì ID của nó là  **1WVdV3oPGJnPNnvA8UjRUNz0DtKJAoTLp**
+Tất nhiên từ link tải trên vẫn có thể truy ngược lại ID được. ví dụ: <b><i>https://doc-0o-6k-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/si1g5f6f0bfi0h2r4cvn9athuatgmvll/1574258400000/11313363601839078081/*/1WVdV3oPGJnPNnvA8UjRUNz0DtKJAoTLp?e=download</b></i> thì ID của nó là  **1WVdV3oPGJnPNnvA8UjRUNz0DtKJAoTLp**
 
 Sau khi tạo xong **playlist** và key mã hóa, họ sẽ phân tích playlist chuyển nó thành dạng json giống như nội dung trả về của URL `https://multi.idocdn.com/vip`.
 
