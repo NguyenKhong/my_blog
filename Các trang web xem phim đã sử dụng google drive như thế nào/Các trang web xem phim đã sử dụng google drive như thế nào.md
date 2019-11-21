@@ -1,6 +1,12 @@
 ## Các trang web xem phim đã sử dụng google drive như thế nào ?
 Trước khi đọc bài viết này, các bạn nên đọc bài viết [*Làm thế nào mà trang web có thể phát video*](https://nhtcntt.blogspot.com/2019/11/lam-nao-ma-trang-web-co-phat-video.html) trước để có kiến thức cơ bản, giúp hiểu hơn bài viết này.
 
+### Phụ lục
+1. Giao thức HLS là gì ?
+2. Khám phá.
+3. Họ đã sử dụng google drive để lưu phim ra sao ?
+4. Làm sao tải được HLS ?
+
 ### 1. Giao thức HLS là gì ?
 **HTTP Live streaming (HLS)** là một giao thức truyền dẫn (transport protocol) nội dung media, nó dựa trên HTTP. Được phát triển bởi **Apple**.
 
