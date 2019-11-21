@@ -3,7 +3,7 @@
 1. Giao thức HTTP. 
 2. Giao thức HTTPS.
 3. HTTP(S) proxy server hoạt động như thế nào ?
-4. Một số vấn đề gặp phải khi dùng HTTPS proxy server như Fiddler, Burpsuite.
+4. Một số vấn đề gặp phải khi dùng HTTP(S) proxy server như Fiddler, Burpsuite.
 5. Mã nguồn proxy server tham khảo.
 ### 1. Giao thức HTTP.
 *HTTP (Hyper Text Transfer Protocol - Giao thức truyền tải siêu văn bản)* là một giao thức của mạng Internet, được dùng để trao đổi thông tin giữa máy cung cấp dịch vụ web (web server) và máy sử dụng dịch vụ web (web client) trong mô hình mạng Client/Server dùng cho WWW (World Wide Web). 
@@ -239,7 +239,7 @@ Bạn có thể lấy **CA certificate** của Fiddler ở đâu, thật ra có 
 Sự khác nhau giữa trước và sau khi bật Fiddler. (à nhớ cài CA certificate vào kho CA trước nhá (^.^)).
 <p align="center"><img src="pic/Image_12.png"></p>
 
-### 4. Một số vấn đề gặp phải khi dùng HTTPS proxy server như Fiddler, Burpsuite.
+### 4. Một số vấn đề gặp phải khi dùng HTTP(S) proxy server như Fiddler, Burpsuite.
 Tôi có đọc nhiều bài trên fb có nội dung: "Em thiết đặt IP:port của Fiddler cho điện thoại rồi mà khi bật app vẫn không bắt được HTTPS request."
 
 Như đã giải thích ở phần trên, chúng ta thiếu **CA certificate**. Bạn phải cài nó vào trong kho CA của điện thoại hoặc trình duyệt hoặc app mà bạn muốn bắt request.
