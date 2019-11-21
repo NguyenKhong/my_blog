@@ -1,5 +1,10 @@
 ## HTTP(S) proxy server hoạt động như thế nào ?
-
+### Phụ lục
+1. Giao thức HTTP. 
+2. Giao thức HTTPS.
+3. HTTP(S) proxy server hoạt động như thế nào ?
+4. Một số vấn đề gặp phải khi dùng HTTPS proxy server như Fiddler, Burpsuite.
+5. Mã nguồn proxy server tham khảo.
 ### 1. Giao thức HTTP.
 *HTTP (Hyper Text Transfer Protocol - Giao thức truyền tải siêu văn bản)* là một giao thức của mạng Internet, được dùng để trao đổi thông tin giữa máy cung cấp dịch vụ web (web server) và máy sử dụng dịch vụ web (web client) trong mô hình mạng Client/Server dùng cho WWW (World Wide Web). 
 
@@ -246,5 +251,5 @@ Nhưng đôi lúc sẽ gặp phải các app cứng đầu. App này sẽ thiế
 ### 5. Mã nguồn proxy server tham khảo.
 Bạn có thể tham khảo mã nguồn này [proxy2](https://github.com/inaz2/proxy2) hoặc phiên bản cũ hơn của nó [proxy2](https://github.com/futuresimple/proxy2) viết bằng python tuy nó hơi đơn giản nhưng sẽ giúp chúng ta hiểu được cách viết một proxy server là như thế nào. Muốn nó chạy được cũng phải tốn chút công sức nhá ^v^.
 
-### 6. HẾT
+### HẾT
 Bài viết còn sơ sài, nếu ai đi ngang qua xin có gì góp ý thêm. ^-^ 
