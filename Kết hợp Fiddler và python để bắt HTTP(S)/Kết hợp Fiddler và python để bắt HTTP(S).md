@@ -38,7 +38,7 @@ Sau đó đặt cho tập tin mới. Rồi **Next** -> **Finish**. Xong
 ### 2. Cấu hình Python.
 Chúng ta sẽ tìm kiếm và biên tập tập tin **cacert.pem**.
 
-Để nhanh chóng tôi dùng phần mềm **Everything** để tìm kiếm tập tin trên.
+Để tìm kiếm một cách nhanh chóng, tôi dùng phần mềm **Everything** để tìm kiếm tập tin trên.
 <p align="center"><img src="pic/Image_11.png"></p>
 
 Trước tiên mở tập tin **FiddlerRoot2.cer** vừa mới lưu lúc nãy. Sau đó sao chép nội dung của nó sang cho các tập tin **cacert.pem** vừa tìm được.
