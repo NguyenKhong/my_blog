@@ -41,7 +41,7 @@ Chúng ta sẽ tìm kiếm và biên tập tập tin **cacert.pem**.
 Để tìm kiếm một cách nhanh chóng, tôi dùng phần mềm **Everything** để tìm kiếm tập tin trên.
 <p align="center"><img src="pic/Image_11.png"></p>
 
-Trước tiên mở tập tin **FiddlerRoot2.cer** vừa mới lưu lúc nãy. Sau đó sao chép nội dung của nó sang cho các tập tin **cacert.pem** vừa tìm được.
+Trước tiên mở tập tin **FiddlerRoot2.cer** vừa mới lưu lúc nãy. Sau đó sao chép nội dung của nó sang cho các tập tin **cacert.pem** vừa tìm được. Tại sao lại có bước này? Nếu bạn muốn tìm hiểu thì có thể đọc bài viết này [HTTP(S) proxy server hoạt động như thế nào ?](https://nhtcntt.blogspot.com/2019/11/https-proxy-server-hoat-ong-nhu-nao.html).
 <p align="center"><img src="pic/Image_12.png"></p>
 
 Để bắt HTTP(S) ta gán các biến môi trường sau:
