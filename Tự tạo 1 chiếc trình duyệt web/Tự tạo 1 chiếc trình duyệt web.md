@@ -79,7 +79,7 @@ self.tabs.tabCloseRequested.connect(self.CloseCurrentTab)
 self.tabs.currentChanged.connect(lambda i: self.setWindowTitle(self.tabs.tabText(i)))
 ```
 
-Phần code trên là code sự kiện diễn liên quan đến các tabs, như là đóng tab hoặc thay đổi giữa các tab. Tương ứng với chúng sẽ là hàm lắng nghe sự kiện này.
+Phần code trên là code sự kiện liên quan đến các tabs, như là đóng tab hoặc thay đổi giữa các tab. Tương ứng với chúng sẽ là hàm lắng nghe sự kiện này.
 
 Vậy làm thế nào để biết các phương thức, sự kiện, thuộc tính trên. Muốn biết thì phải tra tài liệu (document) của qt thôi.
 
@@ -157,7 +157,7 @@ Code trên là tạo giao diện cho từng tab. Dựa trên bố cục của QM
 
 ![](pic/Image_4.png)
 
-Trong phần chúng ta chú ý đến 2 thành phần đó là QWebEngineView và QWebEnginePage.
+Trong phần này chúng ta chú ý đến 2 thành phần đó là QWebEngineView và QWebEnginePage.
 
  * QWebEnginePage nắm giữ HTML, lịch sử duyệt web, profile và thực thi các [hành động](https://doc.qt.io/qt-5/qwebenginepage.html#WebAction-enum) như reload, forward, back, ... Nó thực hiện render nội dung web và chạy mã javascripts. 
 
