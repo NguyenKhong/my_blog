@@ -144,6 +144,6 @@ Truy cập vào colab của bạn, sau đó mở **devtool** lên, sang tab **Ne
 
 Tạo xong rồi giờ chạy cái web browser mini này ở đâu. Thì chạy ở máy tính của bạn đó hoặc chạy trên vps windows, chỉ cần cài vài thứ là chạy ngon lành rồi.
 
-Bài viết sau sẽ chỉ cách chạy trên dòng lệnh linux hoặc docker nhé. (^v^)
+Bài viết [này](https://nhtcntt.blogspot.com/2020/12/tong-quan-o-bai-viet-hom-truoc-chung-ta.html) sẽ chỉ cách chạy trên chính colab luôn nhé ! (^v^)
 
 ## HẾT
